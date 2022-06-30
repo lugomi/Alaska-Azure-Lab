@@ -27,7 +27,11 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Azure Lab Service V1");
+    options.RoutePrefix = string.Empty;
+});
 app.MapControllers();
 
 app.Run();
